@@ -26,9 +26,10 @@ jobs:
       
       # Install Docker Scout          
       - run:
-          name: Build Docker image
+          name: Scan image for CVEs
           command: |
             curl -sSfL https://raw.githubusercontent.com/docker/scout-cli/main/install.sh | sh -s -- -b .
+            docker login -u christiandupuis299 -p ${CDUPUIS_PAT}
             ./docker-scout version
 
 workflows:
