@@ -19,7 +19,7 @@ jobs:
       - setup_remote_docker:
           version: 20.10.11
 
-       Build the hello world image
+      # Build the hello world image
       - run:
           name: Build Docker image
           command: docker build -t nodejs-service:latest .
