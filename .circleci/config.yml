@@ -19,15 +19,15 @@ jobs:
       - setup_remote_docker
 
       # Build the hello world image
-      - run:
-          name: Build Docker image
-          command: docker build --tag helloworld .
+      #- run:
+      #    name: Build Docker image
+      #    command: docker build --tag helloworld .
       
       # Install Docker Scout          
       - run:
           name: Build Docker image
           command: |
-            
+            which docker
             apk add --update curl
             curl -sSfL https://raw.githubusercontent.com/docker/scout-cli/main/install.sh | sh -s -- 
             apk del curl 
