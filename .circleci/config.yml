@@ -22,6 +22,11 @@ jobs:
       - run:
           name: Build Docker image
           command: docker build --tag helloworld .
+      
+      # Install Docker Scout          
+      - run:
+          name: Build Docker image
+          command: curl -sSfL https://raw.githubusercontent.com/docker/scout-cli/main/install.sh | sh -s --
 
 workflows:
   say-hello-workflow:
