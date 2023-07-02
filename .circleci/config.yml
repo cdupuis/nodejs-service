@@ -28,6 +28,7 @@ jobs:
           name: Build Docker image
           command: |
             which docker
+            docker info
             apk add --update curl
             curl -sSfL https://raw.githubusercontent.com/docker/scout-cli/main/install.sh | sh -s -- 
             apk del curl 
