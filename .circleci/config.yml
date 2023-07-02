@@ -19,10 +19,10 @@ jobs:
       - setup_remote_docker:
           version: 20.10.11
 
-      # Build the hello world image
-      #- run:
-      #    name: Build Docker image
-      #    command: docker build --tag helloworld .
+       Build the hello world image
+      - run:
+          name: Build Docker image
+          command: docker build -t nodejs-service:latest .
       
       # Install Docker Scout          
       - run:
@@ -30,7 +30,7 @@ jobs:
           command: |
             curl -sSfL https://raw.githubusercontent.com/docker/scout-cli/main/install.sh | sh -s -- -b .
             docker login -u christiandupuis299 -p ${CDUPUIS_PAT}
-            ./docker-scout version
+            ./docker-scout cves nodejs-service:latest --exit-code --only-serverity critical,high
 
 workflows:
   say-hello-workflow:
