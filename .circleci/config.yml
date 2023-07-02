@@ -17,7 +17,7 @@ jobs:
 
       # Set up a separate Docker environment to run `docker` commands in
       - setup_remote_docker:
-          version: 24.0.2
+          version: 20.10.24
 
       # Build the hello world image
       - run:
