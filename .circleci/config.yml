@@ -31,13 +31,13 @@ jobs:
           name: Build Docker image
           command: docker build -t nodejs-service:latest .
       
-      # Install Docker Scout          
+      # Run Docker Scout          
       - run:
           name: Scan image for CVEs
           command: |
             docker-scout cves nodejs-service:latest --exit-code --only-severity critical,high
 
 workflows:
-  say-hello-workflow:
+  build-docker-image:
     jobs:
       - build
