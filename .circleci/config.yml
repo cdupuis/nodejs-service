@@ -10,7 +10,10 @@ jobs:
     # Use `docker:stable` as the Docker container to run this job in
     docker:
       - image: cimg/base:stable
-
+    
+    environment:
+      IMAGE_TAG: docker/scout-demo-service:latest
+    
     steps:
       # Checkout the repository files
       - checkout
@@ -30,13 +33,13 @@ jobs:
       # Build the hello world image
       - run:
           name: Build Docker image
-          command: docker build -t nodejs-service:latest .
+          command: docker build -t $IMAGE_TAG .
       
       # Run Docker Scout          
       - run:
           name: Scan image for CVEs
           command: |
-            docker-scout cves nodejs-service:latest --exit-code --only-severity critical,high
+            docker-scout cves $IMAGE_TAG --exit-code --only-severity critical,high
 
 workflows:
   build-docker-image:
